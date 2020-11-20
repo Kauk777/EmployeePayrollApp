@@ -1,19 +1,10 @@
 class EmployeePayroll {
-    // property
-    id;
-    salary;
-    gender;
-
-    // constructor
-    constructor(...params) {
-        this.id=params[0];
-        this.name=params[1];
-        this.salary=params[2];
-        this.gender=params[3];
-        this.startDate=params[4];
-    }
 
     // getters and setters
+    get id() { return this._id; }
+    set id(id) {
+        this._id=id;
+    }
     get name() { return this._name; }
     set name(name) {
         let nameReg=RegExp('^[A-Z]{1}[a-z]{3,}$');
@@ -21,25 +12,54 @@ class EmployeePayroll {
         this._name=name;
         else throw 'Invalid Name';
     }
+    get profilePic() { return this._profilePic; }
+    set profilePic(profilePic) {
+        this._profilePic=profilePic;
+    }
+    get gender() { return this._gender; }
+    set gender(gender) {
+        this._gender=gender;
+    }
+    get department() { return this._department; }
+    set department(department) {
+        this._department=department;
+    }
+    get salary() { return this._salary; }
+    set salary(salary) {
+        this._salary=salary;
+    }
+    get note() { return this._note; }
+    set note(note) {
+        this._note=note;
+    }
     get startDate() { return this._startDate; }
+    set startDate(startDate) {
+        this._startDate=startDate;
+    }
+
+
+    /*get startDate() { return this._startDate; }
     set startDate(startDate) {
         let joiningDate=startDate.split("/");
         let currentDate=new Date().getDate();
         let currentMonth=new Date().getMonth();
         let currentYear=new Date().getFullYear();
-        if(joiningDate[0]<=currentDate && joiningDate[1]<=currentMonth && joiningDate[2]<=currentYear)
+        if(joiningDate[0]<=currentDate && joiningDate[1]<=(currentMonth+1) && joiningDate[2]<=currentYear)
         this._startDate=startDate;
         else throw 'Invalid Joining date';
-    }
+    }*/
 
      // method
      toString() {
-         const options = { year: 'numeric', month: 'long', day: 'numeric'};
-         const empDate = !this.startDate ? "undefined" : this.startDate.toLocaleDateString("en-US", options);
-         return "id="+this.id+", name="+this.name+", salary="+this.salary+", "+"gender="+this.gender+", startDate="+empDate;
+         //const options = { year: 'numeric', month: 'numeric', day: 'numeric'};
+         //const empDate = !this.startDate ? "undefined" : this.startDate.toLocaleDateString("en-US", options);
+         return "id="+this.id+", name="+this.name+", gender="+this.gender+
+         ", profilePic="+this.profilePic+", department="+this.department+", salary="+
+         this.salary+", "+", startDate="+this.startDate+", note="+this.note;
      }
 }
 
+/*function save() {
 try {
 let empData=new Array();
 const formElement = document.querySelector('.form');
@@ -55,6 +75,7 @@ empData.forEach(e => console.log(e.toString()));
 catch (e) {
     console.error(e);
 }
+}*/
 
 /*let empData=new EmployeePayroll(1,'Mark',700000);
 console.log(empData.toString());
